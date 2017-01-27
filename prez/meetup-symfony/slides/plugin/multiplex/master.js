@@ -17,8 +17,7 @@
 
 		socket.emit( 'multiplex-statechanged', messageData );
 
-	};
-
+	}
 	// Monitor events that trigger a change in state
 	Reveal.addEventListener( 'slidechanged', post );
 	Reveal.addEventListener( 'fragmentshown', post );
