@@ -302,6 +302,16 @@ Note: Il existe pas mal d'outils plus ou moins complexes pour établir de rappor
 
 
 
+## Apache Bench
+
+* Livrer avec Apache
+* Utilitaire permettant de bencher votre serveur
+* Outil basique mais déjà très complet
+
+Note: Pour finir cette présentation, voici un petit utilitaire livré avec le serveur Apache : Apache Bench. Cet outil permet d'exécuter une cérie de requête à une adresse donné. Il bénéficie d'options simples comme le nombre de requêtes, permet de lancer des opérations concurrentes.  Ça ne remplace pas un processus complet de tests mais permet de tester, au cas par cas, des pages précises et de pouvoir tester également les optimisations.
+
+
+
 ## PHP Unit
 
 * Framework de tests unitaires
@@ -322,14 +332,6 @@ Note: Voilà ce que j'appelle le mode bourrin, que l'on peut appliquer quand on 
 
 
 
-
-## Apache Bench
-
-* Livrer avec Apache
-* Utilitaire permettant de bencher votre serveur
-* Outil basique mais déjà très complet
-
-Note: Pour finir cette présentation, voici un petit utilitaire livré avec le serveur Apache : Apache Bench. Cet outil permet d'exécuter une cérie de requête à une adresse donné. Il bénéficie d'options simples comme le nombre de requêtes, permet de lancer des opérations concurrentes.  Ça ne remplace pas un processus complet de tests mais permet de tester, au cas par cas, des pages précises et de pouvoir tester également les optimisations.
 
 
 
