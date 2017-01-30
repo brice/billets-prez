@@ -306,9 +306,9 @@ Note: Il existe pas mal d'outils plus ou moins complexes pour établir de rappor
 
 * Livrer avec Apache
 * Utilitaire permettant de bencher votre serveur
-* Outil basique mais déjà très complet
+* Outil basique et pratique
 
-Note: Pour finir cette présentation, voici un petit utilitaire livré avec le serveur Apache : Apache Bench. Cet outil permet d'exécuter une cérie de requête à une adresse donné. Il bénéficie d'options simples comme le nombre de requêtes, permet de lancer des opérations concurrentes.  Ça ne remplace pas un processus complet de tests mais permet de tester, au cas par cas, des pages précises et de pouvoir tester également les optimisations.
+Note: Voici un petit utilitaire livré avec le serveur Apache : Apache Bench. Cet outil permet d'exécuter une série de requêtes à une adresse donnée. Il bénéficie d'options simples comme le nombre de requêtes, permet de lancer des opérations concurrentes.  Ça ne remplace pas un processus complet de tests mais permet de tester, au cas par cas, des pages précises et de pouvoir tester également les optimisations.
 
 
 ## Exemple
