@@ -304,7 +304,7 @@ Note: Il existe pas mal d'outils plus ou moins complexes pour établir de rappor
 
 ## Apache Bench
 
-* Livrer avec Apache
+* Livré avec Apache
 * Utilitaire permettant de bencher votre serveur
 * Outil basique mais déjà très complet
 
