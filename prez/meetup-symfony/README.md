@@ -151,6 +151,7 @@ Time: 117ms; Memory: 5M
 ```
 
 
+
 ## PHP Mess Detector
 
 * PHP MD
@@ -158,7 +159,6 @@ Time: 117ms; Memory: 5M
 * Créer un rapport sur les points d'améliorations pour votre code   
 
 Note: J'adore cet utilitaire. Il est facilement customisable, on peut ainsi choisir de tester la propreté du code, sa taille, sa complexité ou son design de façon très flexible. A partir de ça on est libre ou pas de suivre les recommandations. C'est une façon d'identifier les points sensibles et aussi de s'améliorer en tant que développeur.
-
 
 
 ## Exemple de commandes
@@ -219,7 +219,7 @@ Note: Un outil très basique et pourtant très utile. Par le créateur de PHPUni
 
 ## Exemple de commandes
 
-```bash
+```
 $ phploc app
 
 Directories                                          7
@@ -311,6 +311,69 @@ Note: Il existe pas mal d'outils plus ou moins complexes pour établir de rappor
 Note: Pour finir cette présentation, voici un petit utilitaire livré avec le serveur Apache : Apache Bench. Cet outil permet d'exécuter une cérie de requête à une adresse donné. Il bénéficie d'options simples comme le nombre de requêtes, permet de lancer des opérations concurrentes.  Ça ne remplace pas un processus complet de tests mais permet de tester, au cas par cas, des pages précises et de pouvoir tester également les optimisations.
 
 
+## Exemple
+
+```
+$ ab -n 1000 -c 10 http://localhost/
+ 
+This is ApacheBench, Version 2.3 <$Revision: 1663405 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+Server Software:        Apache
+Server Hostname:        localhost
+Server Port:            80
+
+Document Path:          /
+Document Length:        959 bytes
+
+Concurrency Level:      10
+Time taken for tests:   0.178 seconds
+Complete requests:      1000
+Failed requests:        0
+Non-2xx responses:      1000
+Total transferred:      1219000 bytes
+HTML transferred:       959000 bytes
+Requests per second:    5610.26 [#/sec] (mean)
+Time per request:       1.782 [ms] (mean)
+Time per request:       0.178 [ms] (mean, across all concurrent requests)
+Transfer rate:          6678.61 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     0    2   6.4      1      65
+Waiting:        0    2   6.3      1      64
+Total:          0    2   6.4      1      65
+
+Percentage of the requests served within a certain time (ms)
+  50%      1
+  66%      1
+  75%      1
+  80%      1
+  90%      2
+  95%      3
+  98%      6
+  99%     64
+ 100%     65 (longest request)
+```
+
+Note: Voilà un test très simple mais qui permet de présenter les options principales d'un outil tel que ab. On peut déterminer le nombre de requêtes à faire, le nombre de requêtes parrallèles. Pratique pour vérifier si telle ou telle page s'écroule devant la pression. 
+
+
 
 ## PHP Unit
 
@@ -331,7 +394,81 @@ Note: C'est sans doute le premier framework de tests unitaires que l'on trouve e
 Note: Voilà ce que j'appelle le mode bourrin, que l'on peut appliquer quand on arrive sur du code legacy (rappel : le code legacy c'est du code non testé définition de Michael Feathers[1. http://www.netobjectives.com/system/files/WorkingEffectivelyWithLegacyCode.pdf]). Vous commencez par identifier une partie de code à tester (par exemple une fonction ou une méthode de classe ou même un constructeur). Puis rédigez une première classe de tests dans laquelle vous allez inclure le fichier où se trouve le code que vous voulez tester. Bien sur il est tout à fait possible (et recommandé) de configurer vos inclusions pour vous éviter tout le boulot d'inclusion et de recherche. Ensuite dans la classe vous executer le bout de code et vérifier les retours par le moyen des assertions.
 
 
+## Exemple de classe à tester
 
+* Attention ne faites pas ça chez vous
+
+```php
+class CrappyClass
+{
+	public function __construct()
+	{
+		$this->toto = DEMO_CRAPPY_DEFINE;
+	}
+
+	public static function CrappyStaticFunction($params)
+	{
+		if ($params) {
+			return $params;
+		}
+		return false;
+	}
+
+	public function CrappyPublicFunction()
+	{
+		return $this->CrappyPrivateFunction();
+	}
+
+	private function CrappyPrivateFunction()
+	{
+		return $this->toto;
+	}
+}
+```
+
+
+## Exemple de test
+
+* Ça vous pouvez le faire :)
+
+```php
+
+include('src/CrappyClass.php');
+
+class CrappyClassTest extends PHPUnit_Framework_TestCase
+{
+	private static $value = 'dummy test';
+
+	public static function setUpBeforeClass()
+	{
+		if(!defined('DEMO_CRAPPY_DEFINE')) {
+			define('DEMO_CRAPPY_DEFINE', self::$value);
+		}
+	}
+
+	public function testConstructor()
+	{
+		$crap = new CrappyClass();
+
+		$this->assertInstanceOf(CrappyClass::class, $crap);
+		$this->assertEquals(self::$value, $crap->toto);
+	}
+
+	public function testStaticFunction()
+	{
+		$params = [1];
+		$this->assertEquals($params, CrappyClass::CrappyStaticFunction($params));
+		$this->assertFalse(CrappyClass::CrappyStaticFunction(''));
+		$this->assertFalse(CrappyClass::CrappyStaticFunction([]));
+	}
+
+	public function testFunctions()
+	{
+		$crap = new CrappyClass();
+		$this->assertEquals(self::$value, $crap->CrappyPublicFunction());
+	}
+}
+```
 
 
 
