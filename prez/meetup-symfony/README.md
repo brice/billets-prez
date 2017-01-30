@@ -384,7 +384,7 @@ Note: Voilà un test très simple mais qui permet de présenter les options prin
 Note: C'est sans doute le premier framework de tests unitaires que l'on trouve en PHP (mais pas le seul). Développé depuis 2004. Le principe d'un test unitaire est, à mon avis, un indispensable à savoir pour tout développeur. Ne pensez pas que ce n'est pas possible dans votre legacy code au contraire.
 
 
-## Mode de fonctionnement (hors TDD)
+## Mode de fonctionnement
 
 * Identification de ce qu'on veux tester
 * Création d'une classe de test
