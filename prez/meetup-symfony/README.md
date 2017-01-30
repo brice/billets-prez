@@ -306,9 +306,9 @@ Note: Il existe pas mal d'outils plus ou moins complexes pour établir de rappor
 
 * Livré avec Apache
 * Utilitaire permettant de bencher votre serveur
-* Outil basique mais déjà très complet
+* Outil basique et pratique
 
-Note: Pour finir cette présentation, voici un petit utilitaire livré avec le serveur Apache : Apache Bench. Cet outil permet d'exécuter une cérie de requête à une adresse donné. Il bénéficie d'options simples comme le nombre de requêtes, permet de lancer des opérations concurrentes.  Ça ne remplace pas un processus complet de tests mais permet de tester, au cas par cas, des pages précises et de pouvoir tester également les optimisations.
+Note: Voici un petit utilitaire livré avec le serveur Apache : Apache Bench. Cet outil permet d'exécuter une série de requêtes à une adresse donnée. Il bénéficie d'options simples comme le nombre de requêtes, permet de lancer des opérations concurrentes.  Ça ne remplace pas un processus complet de tests mais permet de tester, au cas par cas, des pages précises et de pouvoir tester également les optimisations.
 
 
 ## Exemple
@@ -384,12 +384,12 @@ Note: Voilà un test très simple mais qui permet de présenter les options prin
 Note: C'est sans doute le premier framework de tests unitaires que l'on trouve en PHP (mais pas le seul). Développé depuis 2004. Le principe d'un test unitaire est, à mon avis, un indispensable à savoir pour tout développeur. Ne pensez pas que ce n'est pas possible dans votre legacy code au contraire.
 
 
-## Mode de fonctionnement (hors TDD)
+## Mode de fonctionnement
 
 * Identification de ce qu'on veux tester
 * Création d'une classe de test
 * Execution du code à tester dans la classe de test
-* On vérifie le comportement ou les résultats attendus au moyen d'insertion
+* On vérifie le comportement ou les résultats attendus au moyen d'assertions
 
 Note: Voilà ce que j'appelle le mode bourrin, que l'on peut appliquer quand on arrive sur du code legacy (rappel : le code legacy c'est du code non testé définition de Michael Feathers[1. http://www.netobjectives.com/system/files/WorkingEffectivelyWithLegacyCode.pdf]). Vous commencez par identifier une partie de code à tester (par exemple une fonction ou une méthode de classe ou même un constructeur). Puis rédigez une première classe de tests dans laquelle vous allez inclure le fichier où se trouve le code que vous voulez tester. Bien sur il est tout à fait possible (et recommandé) de configurer vos inclusions pour vous éviter tout le boulot d'inclusion et de recherche. Ensuite dans la classe vous executer le bout de code et vérifier les retours par le moyen des assertions.
 
