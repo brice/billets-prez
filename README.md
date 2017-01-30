@@ -1,3 +1,3 @@
 # Mes présentations
 
-* https://github.com/brice/billets-prez/tree/master/prez/meetup-symfony/slides
+* https://brice.github.io/billets-prez/prez/meetup-symfony/slides/#/
