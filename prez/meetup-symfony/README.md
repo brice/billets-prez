@@ -19,7 +19,7 @@ Note: A noter que Ami Software cherche des développeuses/développeurs et que l
 
 
 
-## De quoi je cause
+## Introduction
 
 * Lister des outils simples
 * A utiliser au quotiden
