@@ -389,7 +389,7 @@ Note: C'est sans doute le premier framework de tests unitaires que l'on trouve e
 * Identification de ce qu'on veux tester
 * Création d'une classe de test
 * Execution du code à tester dans la classe de test
-* On vérifie le comportement ou les résultats attendus au moyen d'insertion
+* On vérifie le comportement ou les résultats attendus au moyen d'assertions
 
 Note: Voilà ce que j'appelle le mode bourrin, que l'on peut appliquer quand on arrive sur du code legacy (rappel : le code legacy c'est du code non testé définition de Michael Feathers[1. http://www.netobjectives.com/system/files/WorkingEffectivelyWithLegacyCode.pdf]). Vous commencez par identifier une partie de code à tester (par exemple une fonction ou une méthode de classe ou même un constructeur). Puis rédigez une première classe de tests dans laquelle vous allez inclure le fichier où se trouve le code que vous voulez tester. Bien sur il est tout à fait possible (et recommandé) de configurer vos inclusions pour vous éviter tout le boulot d'inclusion et de recherche. Ensuite dans la classe vous executer le bout de code et vérifier les retours par le moyen des assertions.
 
