@@ -1,5 +1,5 @@
 
-## Tu peux pas test
+## Tu peux ~~pas~~ test
 
 Brice Favre - Avril 2017
 
@@ -8,6 +8,8 @@ Brice Favre - Avril 2017
 ### Introduction
 
  * Les tests unitaires : Pourquoi et comment?
+ * Expériences et conseils
+ * Cas pratiques
 
 
 
@@ -16,36 +18,47 @@ Brice Favre - Avril 2017
  * Tests unitaires
  * Tests d'intégration
  * Tests fonctionnels
- * Autres tests (conformité, performance...)
+ * Autres tests (conformité, performance, interface...)
 
 
 ### Les tests unitaires
 
  * Le test du programmeur
- * La base d'un plan de test efficace
- * Souvent mal connu
+ * Pas forcément automatisé
+ * Permet d'anticiper les bugs :)
+ * Existe dans tous les langages (même en JS)
+ * Souvent mal connu (et encore je vous parle pas de TDD)
 
 
 
 
 ### Pourquoi tester?
 
+
+ ![Parce que](images/parceque.jpg)
+
+
+### Pourquoi tester?
+
  * Le gros mot : Qualité (ça veut dire quoi?)
- * La réalité : Affronter ses pires ennemis
+ * La réalité : Affronter ses pires ennemis et se donner confiance
 
 
 #### Vos pires ennemis :
 
- * Vous même
  * Les bugs
  * Le temps
+ * Vous même
+
+
+ ![Parce Confiance](images/658326.jpg)
 
 
 
 ### Quoi tester
 
- * Ce que vous avez développé
- * Ce que vous n'avez pas développé
+ * Ce que vous avez développé (TDD)
+ * Ce que vous n'avez pas développé (Legacy)
  * Attention à la surqualité
 
 
@@ -57,6 +70,51 @@ Brice Favre - Avril 2017
    * Runner
    * Librairie d'assertion
 
+
+### Exemple tout bête
+
+* fichier src/MyClass.php
+
+```$php
+
+class MyClass {
+
+    public function myFunction() {
+       // Code
+    }
+}
+```
+
+
+### Exemple tout bête suite
+
+* fichier test/MyClassTest.php
+
+```$php
+use PHPUnit\Framework\TestCase;
+
+class MyClassTest extends TestCase {
+
+    public function testMyFunction() {
+       // Code de test
+    }
+}
+```
+
+
+### Exemple tout bête fin
+
+* Pour lancer le test
+
+```phpunit --bootstrap src/MyClass.php test/MyClassTest.php```
+
+* Et ça marche (mais bon vous testez rien en même temps)
+
+
+
+### Pour finir (avant de pratiquer)
+
+#### [The Way of Testivus](http://www.agitar.com/downloads/TheWayOfTestivus.pdf)
 
 
 ### The way of testivus 1/2
@@ -95,3 +153,5 @@ Brice Favre - Avril 2017
 * http://www.agitar.com/downloads/TheWayOfTestivus.pdf
 * http://thecodelesscode.com/contents
 * https://fr.wikipedia.org/wiki/Coding_dojo
+* https://jtreminio.com/2013/03/unit-testing-tutorial-introduction-to-phpunit/
+* https://www.slideshare.net/nrichand/2010-agile-confrence-comment-vendre-les-tests-automatiss
